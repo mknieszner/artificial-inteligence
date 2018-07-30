@@ -57,35 +57,35 @@ public class AStar {
     }
 
     private List<Node> getAllNeighbours(Node node) {
-        List<Node> neigbors = new ArrayList<>();
+        List<Node> neighbors = new ArrayList<>();
         int row = node.getRowIndex();
         int col = node.getColIndex();
 
         if (row - 1 >= 0 && !this.searchSpace[row - 1][col].isBlock()) {
             searchSpace[row - 1][col].setG(node.getG() + Constants.HORIZONTAL_VERTICAL_COST);
             searchSpace[row - 1][col].setH(manhattanHeuristics(searchSpace[row - 1][col], finalNode));
-            neigbors.add(this.searchSpace[row - 1][col]);
+            neighbors.add(this.searchSpace[row - 1][col]);
         }
 
         if (row + 1 < Constants.NUM_ROWS && !this.searchSpace[row + 1][col].isBlock()) {
             searchSpace[row + 1][col].setG(node.getG() + Constants.HORIZONTAL_VERTICAL_COST);
             searchSpace[row + 1][col].setH(manhattanHeuristics(searchSpace[row + 1][col], finalNode));
-            neigbors.add(this.searchSpace[row + 1][col]);
+            neighbors.add(this.searchSpace[row + 1][col]);
         }
 
         if (col - 1 >= 0 && !this.searchSpace[row][col - 1].isBlock()) {
             searchSpace[row][col - 1].setG(node.getG() + Constants.HORIZONTAL_VERTICAL_COST);
             searchSpace[row][col - 1].setH(manhattanHeuristics(searchSpace[row][col - 1], finalNode));
-            neigbors.add(this.searchSpace[row][col - 1]);
+            neighbors.add(this.searchSpace[row][col - 1]);
         }
 
         if (col + 1 < Constants.NUM_COLS && !this.searchSpace[row][col + 1].isBlock()) {
             searchSpace[row][col + 1].setG(node.getG() + Constants.HORIZONTAL_VERTICAL_COST);
             searchSpace[row][col + 1].setH(manhattanHeuristics(searchSpace[row][col + 1], finalNode));
-            neigbors.add(this.searchSpace[row][col + 1]);
+            neighbors.add(this.searchSpace[row][col + 1]);
         }
 
-        return neigbors;
+        return neighbors;
     }
 
 
